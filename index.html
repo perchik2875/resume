@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jax Hamster — field notes on automating my own work</title>
+<meta name="description" content="AI automation engineer and community builder. Notes on the systems I've built to replace manual work.">
+<style>
+  :root{
+    --bg:#15120D;
+    --bg-2:#1C1812;
+    --paper:#F1E8D8;
+    --paper-dim:#A79C87;
+    --rust:#C96B35;
+    --rust-dim:#8A4E28;
+    --sage:#7C9473;
+    --line: rgba(241,232,216,0.14);
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%; max-width:100%; overflow-x:hidden;}
+  body{
+    margin:0;
+    max-width:100%;
+    overflow-x:hidden;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    font-size:16px;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--rust);color:var(--bg);}
+
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 20px;
+    position:relative; z-index:2;
+  }
+
+  header.topbar{
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:14px 0;
+    gap:10px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:16px;
+    color:var(--paper);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .brand span{color:var(--rust);}
+  .social{
+    display:flex; flex-wrap:wrap; gap:8px 14px;
+    font-family:var(--mono);
+    font-size:11px;
+    width:100%;
+  }
+  .social a{
+    text-decoration:none;
+    color:var(--paper-dim);
+    white-space:nowrap;
+    border-bottom:1px solid transparent;
+    padding-bottom:1px;
+  }
+  .social a:hover, .social a:focus-visible{ color:var(--rust); border-color:var(--rust); }
+
+  .hero{ padding:44px 0 30px; }
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--sage);
+    margin:0 0 14px;
+  }
+  .kicker::before{ content:"— "; color:var(--rust); }
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(28px, 8vw, 40px);
+    line-height:1.16;
+    margin:0 0 22px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--rust);
+    font-weight:500;
+  }
+  .lede{
+    font-size:16.5px;
+    color:var(--paper-dim);
+    margin:0 0 20px;
+  }
+  .lede strong{ color:var(--paper); font-weight:600; }
+
+  .tally{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--paper-dim);
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+    margin-top:24px;
+  }
+  .tally b{ color:var(--rust); font-weight:600; }
+
+  .section{ padding:36px 0; border-top:1px solid var(--line); }
+  .section-title{
+    font-family:var(--mono);
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--paper-dim);
+    margin-bottom:18px;
+  }
+  .tabs{
+    display:flex;
+    gap:6px;
+    margin-bottom:26px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    font-family:var(--serif);
+    font-size:14.5px;
+    background:transparent;
+    color:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:8px 16px;
+    cursor:pointer;
+  }
+  .tab-btn.active{
+    background:var(--rust);
+    color:var(--bg);
+    border-color:var(--rust);
+    font-weight:600;
+  }
+
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .entry{
+    padding:20px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .entry:last-child{ border-bottom:none; }
+  .entry-head{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    margin-bottom:8px;
+  }
+  .entry-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:18px;
+    color:var(--paper);
+  }
+  .entry-tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--sage);
+    padding-top:4px;
+    text-align:right;
+    max-width:40%;
+  }
+  .entry p{
+    margin:6px 0;
+    font-size:15px;
+    color:var(--paper-dim);
+  }
+  .entry p b{ color:var(--paper); font-weight:600; }
+  .entry .impact{
+    display:inline-block;
+    margin-top:8px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--rust);
+    background:rgba(201,107,53,0.08);
+    border:1px solid rgba(201,107,53,0.3);
+    padding:5px 10px;
+    border-radius:3px;
+  }
+
+  .skill-line{
+    font-size:14.5px;
+    color:var(--paper-dim);
+    line-height:2;
+  }
+  .skill-line b{
+    color:var(--paper);
+    font-weight:600;
+    border-bottom:1px solid var(--rust-dim);
+  }
+
+  footer{ padding:36px 0 60px; border-top:1px solid var(--line); }
+  .foot-links{
+    display:flex; flex-wrap:wrap; gap:10px 18px;
+    margin-bottom:20px;
+  }
+  .foot-links a{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--paper-dim);
+    text-decoration:none;
+  }
+  .foot-links a:hover{ color:var(--rust); }
+  .foot-note{
+    font-size:13px;
+    color:var(--paper-dim);
+    max-width:44ch;
+    margin-bottom:20px;
+  }
+  .resume-btns{ display:flex; gap:10px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--rust);
+    color:var(--rust);
+    border-radius:3px;
+  }
+  .btn:active{ background:var(--rust); color:var(--bg); }
+
+  @media (min-width:700px){
+    .wrap{ max-width:760px; padding:0 32px; }
+    .hero{ padding:64px 0 40px; }
+    .entry-head{ align-items:baseline; }
+    .btn:hover{ background:var(--rust); color:var(--bg); }
+    .social a:hover{ color:var(--rust); }
+    .topbar-inner{
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+    }
+    .social{ width:auto; flex-wrap:nowrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="brand">jax<span>_</span>hamster</a>
+    <nav class="social">
+      <a href="https://www.github.com/perchik2875" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/jax-hamster-419bb43b8" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.x.com/imperchk" target="_blank" rel="noopener">X</a>
+      <a href="https://t.me/perchik2875" target="_blank" rel="noopener">TG</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="kicker">field notes from an automation engineer</p>
+    <h1>I keep replacing my own<br><em>manual work</em> with systems.</h1>
+    <p class="lede">
+      Two years of building AI automations, trading bots, and content pipelines —
+      plus a second track running <strong>10,000+ member communities</strong> and
+      audiences across four platforms. No formal CS background. I learn what I need,
+      then ship it.
+    </p>
+    <p class="tally">
+      so far: <b>9</b> systems shipped · <b>33+</b> tools used · <b>27,200+</b> lines written ·
+      <b>~18.5 hrs/day</b> of manual work automated away across active projects
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <p class="section-title">Selected work</p>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="eng" role="tab" aria-selected="true">Engineering</button>
+      <button class="tab-btn" data-tab="com" role="tab" aria-selected="false">Community &amp; Content</button>
+    </div>
+
+    <div class="panel active" data-panel="eng">
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Telegram account automation</span>
+          <span class="entry-tag">Python · Telethon</span>
+        </div>
+        <p><b>Problem:</b> a repetitive bot-interaction workflow was costing 5+ hours a day of manual work.</p>
+        <p><b>Built:</b> a session-based automation layer that runs the full interaction loop unattended, safely and repeatably.</p>
+        <span class="impact">~5 hrs/day reclaimed</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">AI auto-publishing pipeline</span>
+          <span class="entry-tag">Python · LLM API</span>
+        </div>
+        <p><b>Problem:</b> keeping a content channel active meant hours of sourcing, writing, and posting by hand.</p>
+        <p><b>Built:</b> an end-to-end pipeline — scrapes source channels, rewrites with an LLM, matches stock imagery, filters NSFW/ads, posts on a schedule.</p>
+        <span class="impact">1–2 hrs/day reclaimed, scales to more channels</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Personal RAG knowledge agent</span>
+          <span class="entry-tag">Obsidian · Hermes · local LLM</span>
+        </div>
+        <p><b>Problem:</b> scattered personal notes made information almost impossible to retrieve quickly.</p>
+        <p><b>Built:</b> a local AI agent layered over an Obsidian vault for instant retrieval and structuring, working within real local-model memory limits.</p>
+        <span class="impact">4+ hrs/day reclaimed on research</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Video auto-editing bot</span>
+          <span class="entry-tag">Python</span>
+        </div>
+        <p><b>Problem:</b> a content partner needed clips cut, subtitled, and scored with music — every time, by hand.</p>
+        <p><b>Built:</b> a batch-capable pipeline that auto-clips, auto-subtitles, and auto-scores raw footage.</p>
+        <span class="impact">3+ hrs/day reclaimed, runs in parallel</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Algorithmic trading bot</span>
+          <span class="entry-tag">Bybit API · Python</span>
+        </div>
+        <p><b>Problem:</b> a profitable strategy still needed constant manual position monitoring.</p>
+        <p><b>Built:</b> an automated strategy runner with dynamic trailing stop-loss/take-profit, so trades manage themselves toward breakeven-or-better.</p>
+        <span class="impact">5+ hrs/day of monitoring eliminated</span>
+      </div>
+
+    </div>
+
+    <div class="panel" data-panel="com">
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Multi-platform content channels</span>
+          <span class="entry-tag">YouTube · TikTok · TG · IG</span>
+        </div>
+        <p><b>Problem:</b> building an audience from zero across very different platform formats.</p>
+        <p><b>Built:</b> repeatable content workflows across four platforms.</p>
+        <span class="impact">1k+ followers, posts reaching 100k+ views</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Large community moderation</span>
+          <span class="entry-tag">10k+ members</span>
+        </div>
+        <p><b>Problem:</b> engagement decay and conflict in large, fast-moving group chats.</p>
+        <p><b>Built:</b> a moderation structure and a regular event cadence to stabilize activity.</p>
+        <span class="impact">sustained engagement at 10k+ members</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Trusted transaction guarantor</span>
+          <span class="entry-tag">high-value trading chats</span>
+        </div>
+        <p><b>Problem:</b> large peer-to-peer deals had no trust mechanism, capping transaction size.</p>
+        <p><b>Built:</b> nothing to build here — just a reputation for fairness, held over time, that let bigger deals happen safely.</p>
+        <span class="impact">enabled larger, safer deal volume</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <p class="section-title">Stack</p>
+    <p class="skill-line">
+      <b>Python</b>, Telethon, <b>OpenAI / Gemini / Claude APIs</b>, n8n, <b>PostgreSQL</b>,
+      Supabase, SQLite, REST APIs, web scraping, <b>Bybit API</b>, Git,
+      prompt engineering, RAG systems, content strategy, community ops.
+    </p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-links">
+    <a href="https://t.me/perchik2875" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://www.x.com/imperchk" target="_blank" rel="noopener">X</a>
+    <a href="https://www.linkedin.com/in/jax-hamster-419bb43b8" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.github.com/perchik2875" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://discord.gg/DntW26Pd" target="_blank" rel="noopener">Discord</a>
+  </div>
+  <p class="foot-note">Currently working through Google and Anthropic certifications. Open to contract and full-time automation / AI engineering work.</p>
+  <div class="resume-btns">
+    <a class="btn" href="resume-engineering.pdf" target="_blank" rel="noopener">Engineering CV (PDF)</a>
+    <a class="btn" href="resume-creative.pdf" target="_blank" rel="noopener">Community CV (PDF)</a>
+  </div>
+</footer>
+
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+  tabBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabBtns.forEach(b=>{b.classList.remove('active'); b.setAttribute('aria-selected','false');});
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.querySelector(`.panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
