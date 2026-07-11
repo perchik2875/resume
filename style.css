@@ -205,6 +205,32 @@ em {
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent-green);
+  background-color: rgba(147, 168, 153, 0.05);
+}
+
+.theme-pepper .skill-tag:hover {
+  border-color: var(--accent-pepper);
+  background-color: rgba(224, 166, 159, 0.05);
+}
+
+/* Иконки скилов */
+.skill-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.skill-icons-multi {
+  width: 32px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Социальный док в подвале */
