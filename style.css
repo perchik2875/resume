@@ -1,13 +1,13 @@
 :root {
-  --bg-main: #0B100D;       /* Глубокий премиальный черный с хвойным отливом */
-  --bg-card: #131B17;       /* Цвет карточек */
-  --accent-green: #40916C;  /* Изумрудный для тех-профиля */
-  --accent-pepper: #D62246; /* Перченого-красный для креатива */
-  --text-pure: #F4F7F5;     /* Чистый текст */
-  --text-muted: #93A39A;    /* Приглушенный текст */
-  --border-line: rgba(147, 163, 154, 0.12);
-  --radius-lg: 16px;
-  --radius-sm: 8px;
+  --bg-main: #141615;       /* Мягкий матовый графитовый сланец */
+  --bg-card: #1B1E1D;       /* Пастельно-темная подложка карточек */
+  --accent-green: #93A899;  /* Приглушенная пастельная шалфейная зелень */
+  --accent-pepper: #E0A69F; /* Пыльно-розовая пастель (перечный тон) */
+  --text-pure: #E8EBE9;     /* Мягкий белый текст */
+  --text-muted: #919794;    /* Нейтральный матовый серый */
+  --border-line: #232725;   /* Плоские строгие границы без свечения */
+  --radius-lg: 12px;
+  --radius-sm: 6px;
 }
 
 * {
@@ -19,211 +19,174 @@
 body {
   background-color: var(--bg-main);
   color: var(--text-pure);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Контейнер с безопасными отступами */
-.container {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 40px 24px 60px 24px;
+/* Полный сброс фиолетовых подчеркиваний и ссылок */
+a, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: none !important;
+  outline: none;
 }
 
-/* Элементы профиля и заглушка под логотип */
-.profile-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.logo-frame {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--border-line);
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px; /* Если картинки нет, покажется эмодзи */
-}
-
-.logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.title-main {
-  font-size: clamp(24px, 5.5vw, 34px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 16px;
-}
-
-.title-main em {
-  font-style: italic;
-  font-weight: inherit;
+em {
+  font-style: normal;
   color: var(--accent-green);
 }
-.theme-pepper .title-main em {
+.theme-pepper em {
   color: var(--accent-pepper);
 }
 
-.subtitle {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 40px;
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Сетка выбора направлений на главной */
+/* Идеальное центрирование перчика */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.logo-frame {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.title-main {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* Большие карточки-ворота */
 .gateway-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
+  gap: 12px;
 }
 
 .gateway-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 24px;
+  padding: 20px;
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .gateway-card:hover {
-  border-color: rgba(64, 145, 108, 0.4);
-  transform: translateY(-2px);
+  border-color: var(--accent-green);
 }
-
 .gateway-card.creative-card:hover {
-  border-color: rgba(214, 34, 70, 0.4);
+  border-color: var(--accent-pepper);
 }
 
 .card-name {
-  font-size: 18px;
+  font-size: 16.5px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin-bottom: 6px;
 }
 
 .card-pitch {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.card-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent-green);
-  margin-top: 4px;
-}
-.creative-card .card-link {
-  color: var(--accent-pepper);
-}
-
-/* Блоки контента внутренних страниц */
-.section-block {
-  margin-top: 48px;
-}
-
-.section-title {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-/* Методология */
-.method-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.method-step {
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
-  padding: 20px;
-  border-radius: var(--radius-lg);
-}
-
-.step-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--text-pure);
-}
-
-.step-text {
   font-size: 13.5px;
   color: var(--text-muted);
 }
 
-/* Бизнес-карточки */
-.business-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  margin-bottom: 12px;
+/* Блоки визуализации метрик */
+.section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  margin-top: 36px;
 }
 
-.business-card-header {
+/* Крупные цифры */
+.metric-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.metric-box {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-line);
+  padding: 14px;
+  border-radius: var(--radius-lg);
+}
+
+.metric-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-green);
+  line-height: 1.2;
+}
+.theme-pepper .metric-num {
+  color: var(--accent-pepper);
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Компактные бизнес-карточки */
+.compact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-line);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
+}
+
+.card-header-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.badge-impact {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-line);
-  color: var(--text-pure);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.value-statement {
   font-size: 14px;
-  color: var(--accent-green);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.theme-pepper .value-statement {
-  color: var(--accent-pepper);
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
-.value-details {
-  font-size: 13.5px;
+.card-subtext {
+  font-size: 13px;
   color: var(--text-muted);
 }
 
-/* ИСПРАВЛЕННАЯ СЕТКА НАВЫКОВ (Гармоничная, без случайных обводок) */
+/* Сетка навыков с иконками */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 @media (min-width: 480px) {
@@ -235,82 +198,63 @@ body {
 .skill-tag {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 12px;
+  padding: 10px;
   border-radius: var(--radius-sm);
-  font-size: 13px;
-  text-align: center;
-  color: var(--text-pure);
+  font-size: 12.5px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Единая панель контактов (Социальный док) */
+/* Социальный док в подвале */
 .social-dock {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  gap: 8px;
   margin-top: 40px;
-  padding: 20px 0;
+  padding-top: 20px;
   border-top: 1px solid var(--border-line);
 }
 
-.social-icon-link {
+.social-link {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 8px 14px;
+  border-radius: 30px;
   font-size: 13px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
 
-.social-icon-link:hover {
+.social-link:hover {
   color: var(--text-pure);
   border-color: var(--text-pure);
 }
 
-/* Навигация назад */
 .nav-back {
   display: inline-block;
   font-size: 13px;
   color: var(--text-muted);
-  text-decoration: none;
-  margin-bottom: 24px;
-}
-
-.nav-back:hover {
-  color: var(--text-pure);
-}
-
-/* Главные кнопки действий */
-.footer-actions {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .btn-action {
   display: block;
   width: 100%;
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
-  padding: 14px;
-  border-radius: 30px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-pure);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn-action.primary {
   background: var(--accent-green);
   color: var(--bg-main);
-  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-top: 24px;
 }
-.theme-pepper .btn-action.primary {
+.theme-pepper .btn-action {
   background: var(--accent-pepper);
 }
