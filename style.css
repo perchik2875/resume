@@ -5,9 +5,9 @@
   --accent-pepper: #E0A69F; /* Пыльно-розовая пастель (перечный тон) */
   --text-pure: #E8EBE9;     /* Мягкий белый текст */
   --text-muted: #919794;    /* Нейтральный матовый серый */
-  --border-line: #232725;   /* Плоские строгие границы без свечения */
-  --radius-lg: 12px;
-  --radius-sm: 6px;
+  --border-line: #232725;   /* Строгие матовые границы */
+  --radius-lg: 16px;
+  --radius-sm: 8px;
 }
 
 * {
@@ -20,11 +20,11 @@ body {
   background-color: var(--bg-main);
   color: var(--text-pure);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Полный сброс фиолетовых подчеркиваний и ссылок */
+/* Полный сброс фиолетовых подчеркиваний */
 a, a:visited, a:hover, a:active {
   color: inherit;
   text-decoration: none !important;
@@ -39,157 +39,163 @@ em {
   color: var(--accent-pepper);
 }
 
+/* Увеличенный контейнер для большего масштаба резюме */
 .container {
   width: 100%;
-  max-width: 640px;
+  max-width: 760px; /* Было 640px — интерфейс стал заметно просторнее */
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 56px 24px;
 }
 
-/* Идеальное центрирование перчика */
+/* Измененный блок заголовка */
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 44px;
 }
 
 .logo-frame {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1;
 }
 
 .brand-title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .title-main {
-  font-size: clamp(24px, 5vw, 32px);
+  font-size: clamp(28px, 5.5vw, 40px); /* Укрупненный главный заголовок */
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 16px;
 }
 
 .subtitle {
-  font-size: 14.5px;
+  font-size: 16.5px; /* Более читаемый размер */
   color: var(--text-muted);
-  margin-bottom: 32px;
+  margin-bottom: 44px;
 }
 
-/* Большие карточки-ворота */
+/* Сетка выбора треков */
 .gateway-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .gateway-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 20px;
+  padding: 28px;
   border-radius: var(--radius-lg);
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .gateway-card:hover {
   border-color: var(--accent-green);
+  transform: translateY(-1px);
 }
 .gateway-card.creative-card:hover {
   border-color: var(--accent-pepper);
 }
 
 .card-name {
-  font-size: 16.5px;
+  font-size: 19px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .card-pitch {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: var(--text-muted);
 }
 
-/* Блоки визуализации метрик */
+/* Заголовки секций */
 .section-title {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 16px;
-  margin-top: 36px;
+  margin-bottom: 20px;
+  margin-top: 52px;
 }
 
-/* Крупные цифры */
+/* Метрики */
 .metric-row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
 .metric-box {
   flex: 1;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 14px;
+  padding: 20px;
   border-radius: var(--radius-lg);
 }
 
 .metric-num {
-  font-size: 24px;
+  font-size: 34px; /* Огромные красивые цифры пользы */
   font-weight: 700;
   color: var(--accent-green);
-  line-height: 1.2;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 .theme-pepper .metric-num {
   color: var(--accent-pepper);
 }
 
 .metric-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
 }
 
-/* Компактные бизнес-карточки */
+/* Бизнес-карточки */
 .compact-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 16px;
+  padding: 22px;
   border-radius: var(--radius-lg);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .card-header-wrap {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .card-subtext {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-muted);
 }
 
-/* Сетка навыков с иконками */
+/* Сетка навыков с SVG логотипами */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 540px) {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -198,72 +204,59 @@ em {
 .skill-tag {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 10px;
+  padding: 14px;
   border-radius: var(--radius-sm);
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-  color: var(--text-pure);
+  gap: 10px;
 }
 
-.skill-tag:hover {
-  border-color: var(--accent-green);
-  background-color: rgba(147, 168, 153, 0.05);
-}
-
-.theme-pepper .skill-tag:hover {
-  border-color: var(--accent-pepper);
-  background-color: rgba(224, 166, 159, 0.05);
-}
-
-/* Иконки скилов */
-.skill-icon {
+/* Стилизация иконок внутри тегов */
+.tech-icon {
   width: 18px;
   height: 18px;
-  object-fit: contain;
   flex-shrink: 0;
-  color: var(--accent-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.skill-icon-gemini {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
+.tech-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor; /* Иконка принимает цвет текста тега */
 }
 
-.skill-icons-multi {
-  width: 32px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* Социальный док в подвале */
+/* Социальные ссылки */
 .social-dock {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 40px;
-  padding-top: 20px;
+  gap: 10px;
+  margin-top: 56px;
+  padding-top: 24px;
   border-top: 1px solid var(--border-line);
 }
 
 .social-link {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 8px 14px;
+  padding: 10px 18px;
   border-radius: 30px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: var(--text-muted);
   transition: all 0.2s ease;
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .social-link:hover {
@@ -273,9 +266,9 @@ em {
 
 .nav-back {
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .btn-action {
@@ -283,12 +276,12 @@ em {
   width: 100%;
   background: var(--accent-green);
   color: var(--bg-main);
-  padding: 12px;
+  padding: 16px;
   border-radius: 30px;
   text-align: center;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 .theme-pepper .btn-action {
   background: var(--accent-pepper);
