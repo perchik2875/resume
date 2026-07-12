@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 :root {
   --bg-main: #141615;       /* Мягкий матовый графитовый сланец */
   --bg-card: #1B1E1D;       /* Пастельно-темная подложка карточек */
@@ -43,14 +45,14 @@ em {
   width: 100%;
   max-width: 840px;
   margin: 0 auto;
-  padding: 60px 32px;
+  padding: 60px 32px 80px;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-bottom: 44px;
+  margin-bottom: 48px;
 }
 
 .logo-frame {
@@ -62,6 +64,9 @@ em {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .logo-frame svg {
@@ -71,23 +76,33 @@ em {
 }
 
 .brand-title {
+  font-family: 'Righteous', -apple-system, sans-serif;
   font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--accent-pepper);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-emoji {
+  font-family: -apple-system, "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 22px;
 }
 
 .title-main {
   font-size: clamp(28px, 5.5vw, 40px);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
 .subtitle {
   font-size: 16.5px;
   color: var(--text-muted);
-  margin-bottom: 44px;
+  margin-bottom: 48px;
   max-width: 700px;
 }
 
@@ -95,7 +110,7 @@ em {
 .gateway-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .gateway-card {
@@ -104,6 +119,7 @@ em {
   padding: 28px;
   border-radius: var(--radius-lg);
   transition: border-color 0.2s ease, transform 0.2s ease;
+  display: block;
 }
 
 .gateway-card:hover {
@@ -117,7 +133,7 @@ em {
 .card-name {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -132,6 +148,7 @@ em {
 .card-pitch {
   font-size: 15px;
   color: var(--text-muted);
+  line-height: 1.55;
 }
 
 /* Раздел визуализации и крупных цифр */
@@ -140,21 +157,21 @@ em {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
-  margin-bottom: 20px;
-  margin-top: 48px;
+  margin-bottom: 22px;
+  margin-top: 56px;
 }
 
 .metric-row {
   display: flex;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .metric-box {
   flex: 1;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 20px;
+  padding: 22px 20px;
   border-radius: var(--radius-lg);
 }
 
@@ -163,7 +180,7 @@ em {
   font-weight: 800;
   color: var(--accent-green);
   line-height: 1.1;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   letter-spacing: -0.02em;
 }
 .theme-pepper .metric-num {
@@ -180,29 +197,32 @@ em {
 .compact-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 20px;
+  padding: 22px 24px;
   border-radius: var(--radius-lg);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .card-header-wrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .card-subtext {
   font-size: 14px;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* Сетка навыков с адаптивными колонками */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 16px;
 }
 
 @media (min-width: 540px) {
@@ -220,20 +240,21 @@ em {
 .skill-tag {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 12px 16px;
+  padding: 16px 18px;
   border-radius: var(--radius-sm);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--text-pure);
+  min-height: 54px;
 }
 
 /* Убрано принудительное fill: currentColor, чтобы активировать цветные логотипы */
 .skill-tag svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
@@ -241,22 +262,22 @@ em {
 .social-dock {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 56px;
-  padding-top: 24px;
+  gap: 12px;
+  margin-top: 96px;
+  padding-top: 32px;
   border-top: 1px solid var(--border-line);
 }
 
 .social-link {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 10px 18px;
+  padding: 11px 20px;
   border-radius: 30px;
   font-size: 14px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
@@ -265,6 +286,7 @@ em {
   width: 16px;
   height: 16px;
   fill: currentColor;
+  flex-shrink: 0;
 }
 
 .social-link:hover {
@@ -276,7 +298,7 @@ em {
   display: inline-block;
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   font-weight: 500;
 }
 
@@ -290,9 +312,8 @@ em {
   text-align: center;
   font-size: 15px;
   font-weight: 700;
-  margin-top: 32px;
+  margin-top: 40px;
 }
 .theme-pepper .btn-action {
   background: var(--accent-pepper);
 }
-
