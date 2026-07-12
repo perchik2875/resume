@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap');
 
 :root {
-  --bg-main: #141615;
-  --bg-card: #1B1E1D;
-  --accent-green: #93A899;
-  --accent-pepper: #E0A69F;
-  --text-pure: #E8EBE9;
-  --text-muted: #919794;
-  --border-line: #232725;
+  --bg-main: #141615;       /* Мягкий матовый графитовый сланец */
+  --bg-card: #1B1E1D;       /* Пастельно-темная подложка карточек */
+  --accent-green: #93A899;  /* Приглушенная пастельная шалфейная зелень */
+  --accent-pepper: #E0A69F; /* Пыльно-розовая пастель (перечный тон) */
+  --text-pure: #E8EBE9;     /* Мягкий белый текст */
+  --text-muted: #919794;    /* Нейтральный матовый серый */
+  --border-line: #232725;   /* Плоские строгие границы без неона */
   --radius-lg: 16px;
   --radius-sm: 8px;
 }
@@ -21,11 +21,12 @@
 body {
   background-color: var(--bg-main);
   color: var(--text-pure);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Полный сброс фиолетовых и синих подчеркиваний */
 a, a:visited, a:hover, a:active {
   color: inherit;
   text-decoration: none !important;
@@ -39,80 +40,63 @@ em {
   color: var(--accent-pepper);
 }
 
+/* Увеличенный интерфейс */
 .container {
   width: 100%;
-  max-width: 920px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 80px 40px 120px;
+  padding: 72px 36px 96px;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 64px;
-}
-
-.logo-frame {
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 24px;
-  line-height: 1;
-}
-
-.logo-frame svg {
-  width: 32px;
-  height: 32px;
-  fill: var(--accent-pepper);
+  gap: 12px;
+  margin-bottom: 52px;
 }
 
 .brand-title {
-  font-family: 'Righteous', -apple-system, sans-serif;
-  font-size: 32px;
+  font-family: 'Quicksand', -apple-system, sans-serif;
+  font-size: 27px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.005em;
   color: var(--accent-pepper);
   display: flex;
   align-items: center;
-  gap: 12px;
-  line-height: 1.2;
+  gap: 10px;
 }
 
 .brand-emoji {
   font-family: -apple-system, "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .title-main {
-  font-size: clamp(32px, 6vw, 48px);
+  font-size: clamp(30px, 6vw, 44px);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 24px;
+  line-height: 1.25;
+  margin-bottom: 22px;
 }
 
 .subtitle {
   font-size: 17px;
   color: var(--text-muted);
-  margin-bottom: 56px;
-  max-width: 760px;
-  line-height: 1.65;
+  margin-bottom: 52px;
+  max-width: 720px;
 }
 
+/* Сетка выбора трека */
 .gateway-grid {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
 .gateway-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 36px;
+  padding: 32px;
   border-radius: var(--radius-lg);
   transition: border-color 0.2s ease, transform 0.2s ease;
   display: block;
@@ -120,59 +104,59 @@ em {
 
 .gateway-card:hover {
   border-color: var(--accent-green);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 .gateway-card.creative-card:hover {
   border-color: var(--accent-pepper);
 }
 
 .card-name {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .card-name svg {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
 }
 
 .card-pitch {
-  font-size: 16px;
+  font-size: 15.5px;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
+/* Раздел визуализации и крупных цифр */
 .section-title {
-  font-size: 12px;
+  font-size: 12.5px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   margin-top: 64px;
-  font-weight: 600;
 }
 
 .metric-row {
   display: flex;
-  gap: 20px;
-  margin-bottom: 48px;
+  gap: 18px;
+  margin-bottom: 40px;
 }
 
 .metric-box {
   flex: 1;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 28px 24px;
+  padding: 26px 22px;
   border-radius: var(--radius-lg);
 }
 
 .metric-num {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 800;
   color: var(--accent-green);
   line-height: 1.1;
@@ -184,35 +168,37 @@ em {
 }
 
 .metric-label {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-muted);
   font-weight: 500;
 }
 
+/* Компактные бизнес-карточки */
 .compact-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 28px 30px;
+  padding: 26px 28px;
   border-radius: var(--radius-lg);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .card-header-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  font-size: 17px;
+  gap: 12px;
+  font-size: 16.5px;
   font-weight: 700;
   margin-bottom: 12px;
 }
 
 .card-subtext {
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--text-muted);
   line-height: 1.65;
 }
 
+/* Сетка навыков с адаптивными колонками */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -236,63 +222,60 @@ em {
   border: 1px solid var(--border-line);
   padding: 18px 20px;
   border-radius: var(--radius-sm);
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
   color: var(--text-pure);
   min-height: 60px;
 }
 
-.skill-tag svg,
-.tech-icon {
+/* Убрано принудительное fill: currentColor, чтобы активировать цветные логотипы */
+.skill-tag svg {
   width: 22px;
   height: 22px;
   flex-shrink: 0;
+}
+
+/* Секция контактов (Нижняя панель) */
+.contacts-section {
+  margin-top: 120px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-line);
+}
+
+.contacts-label {
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
 }
 
 .social-dock {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 120px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border-line);
-}
-
-.footer-contacts {
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.footer-label {
-  width: 100%;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  font-weight: 600;
 }
 
 .social-link {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 12px 22px;
+  padding: 11px 20px;
   border-radius: 30px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
 
 .social-link svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: currentColor;
   flex-shrink: 0;
 }
@@ -304,15 +287,10 @@ em {
 
 .nav-back {
   display: inline-block;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav-back:hover {
-  color: var(--text-pure);
 }
 
 .btn-action {
@@ -320,26 +298,13 @@ em {
   width: 100%;
   background: var(--accent-green);
   color: var(--bg-main);
-  padding: 18px;
+  padding: 17px;
   border-radius: 30px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 700;
   margin-top: 48px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.btn-action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(147, 168, 153, 0.2);
 }
 .theme-pepper .btn-action {
   background: var(--accent-pepper);
-}
-.theme-pepper .btn-action:hover {
-  box-shadow: 0 8px 24px rgba(224, 166, 159, 0.2);
-}
-
-.section-block {
-  margin-bottom: 20px;
 }
