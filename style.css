@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --bg-main: #141615;
@@ -21,7 +21,7 @@
 body {
   background-color: var(--bg-main);
   color: var(--text-pure);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -41,24 +41,21 @@ em {
 
 .container {
   width: 100%;
-  max-width: 840px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 60px 32px 80px;
+  padding: 80px 40px 120px;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-bottom: 48px;
+  gap: 20px;
+  margin-bottom: 64px;
 }
 
 .logo-frame {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--bg-card);
-  border: 1px solid var(--border-line);
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,52 +65,54 @@ em {
 }
 
 .logo-frame svg {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   fill: var(--accent-pepper);
 }
 
 .brand-title {
   font-family: 'Righteous', -apple-system, sans-serif;
-  font-size: 26px;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--accent-pepper);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  line-height: 1.2;
 }
 
 .brand-emoji {
   font-family: -apple-system, "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .title-main {
-  font-size: clamp(28px, 5.5vw, 40px);
+  font-size: clamp(32px, 6vw, 48px);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.25;
-  margin-bottom: 20px;
+  line-height: 1.2;
+  margin-bottom: 24px;
 }
 
 .subtitle {
-  font-size: 16.5px;
+  font-size: 17px;
   color: var(--text-muted);
-  margin-bottom: 48px;
-  max-width: 700px;
+  margin-bottom: 56px;
+  max-width: 760px;
+  line-height: 1.65;
 }
 
 .gateway-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .gateway-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 28px;
+  padding: 36px;
   border-radius: var(--radius-lg);
   transition: border-color 0.2s ease, transform 0.2s ease;
   display: block;
@@ -121,62 +120,63 @@ em {
 
 .gateway-card:hover {
   border-color: var(--accent-green);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .gateway-card.creative-card:hover {
   border-color: var(--accent-pepper);
 }
 
 .card-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .card-name svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
 }
 
 .card-pitch {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .section-title {
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 22px;
-  margin-top: 56px;
+  margin-bottom: 28px;
+  margin-top: 64px;
+  font-weight: 600;
 }
 
 .metric-row {
   display: flex;
-  gap: 16px;
-  margin-bottom: 36px;
+  gap: 20px;
+  margin-bottom: 48px;
 }
 
 .metric-box {
   flex: 1;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 22px 20px;
+  padding: 28px 24px;
   border-radius: var(--radius-lg);
 }
 
 .metric-num {
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 800;
   color: var(--accent-green);
   line-height: 1.1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   letter-spacing: -0.02em;
 }
 .theme-pepper .metric-num {
@@ -184,7 +184,7 @@ em {
 }
 
 .metric-label {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -192,25 +192,25 @@ em {
 .compact-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 22px 24px;
+  padding: 28px 30px;
   border-radius: var(--radius-lg);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .card-header-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  font-size: 16px;
+  gap: 16px;
+  font-size: 17px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .card-subtext {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .skills-grid {
@@ -234,20 +234,21 @@ em {
 .skill-tag {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 16px 18px;
+  padding: 18px 20px;
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 12px;
   color: var(--text-pure);
-  min-height: 54px;
+  min-height: 60px;
 }
 
-.skill-tag svg {
-  width: 20px;
-  height: 20px;
+.skill-tag svg,
+.tech-icon {
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
@@ -255,28 +256,43 @@ em {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 96px;
-  padding-top: 32px;
+  margin-top: 120px;
+  padding-top: 40px;
   border-top: 1px solid var(--border-line);
+}
+
+.footer-contacts {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.footer-label {
+  width: 100%;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
 }
 
 .social-link {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  padding: 11px 20px;
+  padding: 12px 22px;
   border-radius: 30px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
 
 .social-link svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: currentColor;
   flex-shrink: 0;
 }
@@ -288,10 +304,15 @@ em {
 
 .nav-back {
   display: inline-block;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-muted);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-back:hover {
+  color: var(--text-pure);
 }
 
 .btn-action {
@@ -299,13 +320,26 @@ em {
   width: 100%;
   background: var(--accent-green);
   color: var(--bg-main);
-  padding: 16px;
+  padding: 18px;
   border-radius: 30px;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  margin-top: 40px;
+  margin-top: 48px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(147, 168, 153, 0.2);
 }
 .theme-pepper .btn-action {
   background: var(--accent-pepper);
-    }
+}
+.theme-pepper .btn-action:hover {
+  box-shadow: 0 8px 24px rgba(224, 166, 159, 0.2);
+}
+
+.section-block {
+  margin-bottom: 20px;
+}
