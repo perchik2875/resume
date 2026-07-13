@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap');
 
 :root {
-  --bg-main: #141615;       /* Мягкий матовый графитовый сланец */
-  --bg-card: #1B1E1D;       /* Пастельно-темная подложка карточек */
-  --accent-green: #93A899;  /* Приглушенная пастельная шалфейная зелень */
-  --accent-pepper: #E0A69F; /* Пыльно-розовая пастель (перечный тон) */
-  --text-pure: #E8EBE9;     /* Мягкий белый текст */
-  --text-muted: #919794;    /* Нейтральный матовый серый */
-  --border-line: #232725;   /* Плоские строгие границы без неона */
+  --bg-main: #141615;
+  --bg-card: #1B1E1D;
+  --accent-green: #93A899;
+  --accent-pepper: #E0A69F;
+  --text-pure: #E8EBE9;
+  --text-muted: #919794;
+  --border-line: #232725;
   --radius-lg: 16px;
   --radius-sm: 8px;
 }
@@ -26,7 +26,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Полный сброс фиолетовых и синих подчеркиваний */
 a, a:visited, a:hover, a:active {
   color: inherit;
   text-decoration: none !important;
@@ -40,7 +39,6 @@ em {
   color: var(--accent-pepper);
 }
 
-/* Увеличенный интерфейс */
 .container {
   width: 100%;
   max-width: 940px;
@@ -83,10 +81,9 @@ em {
   font-size: 17.5px;
   color: var(--text-muted);
   margin-bottom: 60px;
-  max-width: 740px;
+  max-width: 640px;
 }
 
-/* Сетка выбора трека */
 .gateway-grid {
   display: flex;
   flex-direction: column;
@@ -131,7 +128,6 @@ em {
   line-height: 1.6;
 }
 
-/* Раздел визуализации и крупных цифр */
 .section-title {
   font-size: 13px;
   text-transform: uppercase;
@@ -173,7 +169,6 @@ em {
   font-weight: 500;
 }
 
-/* Компактные бизнес-карточки */
 .compact-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
@@ -198,7 +193,6 @@ em {
   line-height: 1.65;
 }
 
-/* Сетка навыков с адаптивными колонками */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -231,14 +225,12 @@ em {
   min-height: 64px;
 }
 
-/* Убрано принудительное fill: currentColor, чтобы активировать цветные логотипы */
 .skill-tag svg {
   width: 22px;
   height: 22px;
   flex-shrink: 0;
 }
 
-/* Секция контактов (Нижняя панель) */
 .contacts-section {
   margin-top: 120px;
   padding-top: 36px;
